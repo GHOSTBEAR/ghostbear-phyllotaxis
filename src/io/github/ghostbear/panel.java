@@ -31,13 +31,12 @@ public class panel extends JPanel implements ActionListener {
         //*
 
         //
-
         for (int i = 0; i < n; i++) {
             double a = i * angle; // 137.5
             double r = c * Math.sqrt(i);
             double x = (r * Math.cos(a)) + (640 - 1.5);
             double y = (r * Math.sin(a)) + (390 - 1.5);
-            g.setColor(Color.getHSBColor((float) (i * 0.00015), 1, 1));
+            g.setColor(Color.getHSBColor((float) (i * 0.0017), 1, 1));
             g.fillOval((int) x, (int) y, 3, 3);
             repaint();
         }
@@ -45,6 +44,7 @@ public class panel extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        n++;
+        if (n > 600) timer.stop();
+        n += 10;
     }
 }
