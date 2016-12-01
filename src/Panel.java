@@ -1,20 +1,20 @@
-package io.github.ghostbear;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class panel extends JPanel implements ActionListener {
+public class Panel extends JPanel implements ActionListener {
     private Timer timer;
     private int n = 0, c = 9;
     private double angle = 137 + Math.random();
-
-    panel() {
+    JSlider slider;
+    Panel() {
         System.out.println(angle);
         this.setBackground(new Color(29, 29, 29));
         timer = new Timer(10, this);
         timer.start();
+        slider = new JSlider(0, 1000, 500);
+        add(slider);
     }
 
     public void paintComponent(Graphics g) {
@@ -42,9 +42,13 @@ public class panel extends JPanel implements ActionListener {
         }
 
     }
-
+    long timediff = System.currentTimeMillis();
     public void actionPerformed(ActionEvent e) {
-        if (n > 600) timer.stop();
-        n += 10;
+        // if (n > 1) timer.stop();
+        n += 1;
+        /*if (slider.getValueIsAdjusting()) {
+            angle =  137 + slider.getValue() / 1000;
+        }*/
+
     }
 }
